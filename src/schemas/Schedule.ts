@@ -6,7 +6,7 @@ import { Int } from "type-graphql";
 @ObjectType({ description: "Line Schedule" })
 export class Schedule {
   @Field()
-  @Length(4, 4)
+  @Length(1, 4)
   name: string;
 
   @Field(() => [Int])
