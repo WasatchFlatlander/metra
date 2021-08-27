@@ -35,16 +35,22 @@ mutation Mutation {
 ```
 ####  (2) getSchedule(name: string)
 ```
-mutation Query {
-	getSchedule(name: "bnsf") {
-		name,
-		times
-	}
+query Query {
+	getSchedule(name: "bnsf")
 }
 ```
-####  (3) getNextBusyTime(time: number)
+####  (3) getSchedules
 ```
-mutation Query {
+query Query {
+	getSchedules {
+        name,
+        times
+    }
+}
+```
+####  (4) getNextBusyTime(time: number)
+```
+query Query {
 	getNextBusyTime(time:  5)
 }
 ```
