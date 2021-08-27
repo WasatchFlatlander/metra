@@ -3,11 +3,15 @@
 ## Requirements
 * Node JS > 14.4.0
 * NPM > 6.14.5
+* Docker > 19.03.8
 
 ## Install
-* $ git clone https://github.com/YOUR_USERNAME/PROJECT_TITLE
+### Node/NPM
+* $ git clone https://github.com/WasatchFlatlander/metra.git
 * $ cd metra
 * $ npm ci
+### Docker Compose
+* $ docker-compose up
 
 ## Running the project
 

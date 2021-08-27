@@ -4,7 +4,6 @@ import { buildSchema } from "type-graphql";
 import { ScheduleResolver } from "./resolvers/ScheduleResolver";
 
 async function bootstrap() {
-  //write your js code here
   const schema = await buildSchema({
     resolvers: [ScheduleResolver],
     nullableByDefault: true
