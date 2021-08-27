@@ -9,7 +9,7 @@
 ### Node/NPM
 * $ git clone https://github.com/WasatchFlatlander/metra.git
 * $ cd metra
-* $ npm ci
+* $ npm i
 ### Docker Compose
 * $ docker-compose up
 
