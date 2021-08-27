@@ -22,6 +22,16 @@ export class ScheduleResolver {
     return db.fetch(name);
   }
 
+  @Query(() => [Schedule])
+  getSchedules(): Schedule[] {
+    return db.keys().map((key) => {
+      return Object.assign(new Schedule(), {
+        name: key,
+        times: db.fetch(key),
+      });      
+    })
+  }
+
   @Query(() => Int)
   getNextBusyTime(@Arg("time") time: number): number | null {
     validateStopTime(time);

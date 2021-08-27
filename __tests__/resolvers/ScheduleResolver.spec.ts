@@ -86,6 +86,43 @@ fdescribe("ScheduleResolver", () => {
     });
   });
 
+  describe("getSchedules Query", () => {
+    test("should return schedule times", async () => {
+      let mutation = `mutation {
+            setSchedule(
+              name: "bnsf",
+              times: [1,2,3]
+            ) {
+              name, times
+            }
+          }`;
+      await graphql(ref.schema, mutation);
+      mutation = `mutation {
+        setSchedule(
+          name: "upnw",
+          times: [2,3,4]
+        ) {
+          name, times
+        }
+      }`;
+      await graphql(ref.schema, mutation);
+      const query = `query {
+            getSchedules {
+              name,
+              times
+            }
+          }`;
+      const response = await graphql(ref.schema, query);
+      const schedules = response.data.getSchedules.map((schedule) => {
+        return { name: schedule.name, times: schedule.times };
+      });
+      expect(schedules).toEqual([
+        { name: "bnsf", times: [1, 2, 3] },
+        { name: "upnw", times: [2, 3, 4] },
+      ]);
+    });
+  });
+
   describe("getNextBusyTime Query", () => {
     test("should return next busy time example 1", async () => {
       let mutation = `mutation {
