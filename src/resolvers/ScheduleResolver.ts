@@ -9,7 +9,7 @@ export class ScheduleResolver {
   @Mutation(() => Schedule)
   setSchedule(@Args() { name, times }: Schedule): Schedule {
     validateScheduleTimes(times);
-    times.sort();
+    times.sort((a,b) => a - b);
     db.set(name, times);
     return Object.assign(new Schedule(), {
       name,
@@ -28,7 +28,7 @@ export class ScheduleResolver {
       return Object.assign(new Schedule(), {
         name: key,
         times: db.fetch(key),
-      });      
+      });
     })
   }
 

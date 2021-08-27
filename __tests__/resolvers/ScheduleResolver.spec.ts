@@ -53,14 +53,14 @@ fdescribe("ScheduleResolver", () => {
       const mutation = `mutation {
               setSchedule(
                 name: "upnw",
-                times: [3,2,1]
+                times: [3,2,100]
               ) {
                  times
               }
             }`;
       const schedule = await graphql(ref.schema, mutation);
       const { times } = schedule.data.setSchedule;
-      expect(times).toEqual([1, 2, 3]);
+      expect(times).toEqual([2, 3, 100]);
     });
   });
 
