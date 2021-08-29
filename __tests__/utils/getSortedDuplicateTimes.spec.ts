@@ -14,9 +14,9 @@ describe("getSortedDuplicateTimes", () => {
   });
 
   test("Should return an array of duplicates sorted", () => {
-    const array = [5, 4, 3, 2, 1, 1, 2, 3, 4, 5];
+    const array = [5, 40, 3, 2, 1, 1, 2, 3, 40, 5];
     const arrayDuplicates = getSortedDuplicateTimes(array);
-    expect(arrayDuplicates).toEqual([1, 2, 3, 4, 5]);
+    expect(arrayDuplicates).toEqual([1, 2, 3, 5, 40]);
   });
 
   test("Should handle more than duplicated data", () => {

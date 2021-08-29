@@ -12,6 +12,6 @@ export function getSortedDuplicateTimes(allStopTimes: number[]): number[] {
     }
     return acc;
   }, {});
-  duplicateStopTimes.sort();
+  duplicateStopTimes.sort((a, b) => a - b);
   return duplicateStopTimes;
 }
