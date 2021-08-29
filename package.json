@@ -7,7 +7,7 @@
     "dev": "nodemon 'src/server.ts' --exec 'ts-node'",
     "lint": "eslint . --ext .ts",
     "test": "jest",
-    "test:coverage": "jest --coverage",
+    "test:coverage": "jest --coverage --collectCoverageFrom=src/**/*.ts",
     "start": "node dist/server.js"
   },
   "author": "",

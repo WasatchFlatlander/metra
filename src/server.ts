@@ -1,21 +1,12 @@
 import "reflect-metadata";
 import { ApolloServer } from "apollo-server";
-import { buildSchema } from "type-graphql";
-import { ScheduleResolver } from "./resolvers/ScheduleResolver";
+import { getServer } from "./utils/getServer";
 
-async function bootstrap() {
-  const schema = await buildSchema({
-    resolvers: [ScheduleResolver],
-    nullableByDefault: true
-  });
-
-  const server = new ApolloServer({
-    schema,
-  });
-
-  server.listen().then(({ url }) => {
-    console.log(`🚀 Server ready at ${url}`);
-  });
+async function bootstrap(): Promise<ApolloServer> {
+  const server = await getServer();
+  const { url } = await server.listen();
+  console.log(`🚀 Server ready at ${url}`);
+  return server;
 }
 
 bootstrap();
