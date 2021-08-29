@@ -4,7 +4,7 @@ import { graphql, GraphQLSchema } from "graphql";
 import { ScheduleResolver } from "../../src/resolvers/ScheduleResolver";
 import * as db from "../../src/utils/db";
 
-fdescribe("ScheduleResolver", () => {
+describe("ScheduleResolver", () => {
   const ref: { schema?: GraphQLSchema } = {};
 
   beforeAll(async () => {
@@ -78,10 +78,12 @@ fdescribe("ScheduleResolver", () => {
       const query = `query {
             getSchedule(
               name: "bnsf",
-            )
+            ) {
+              times
+            }
           }`;
       const response = await graphql(ref.schema, query);
-      const times = response.data.getSchedule;
+      const { times } = response.data.getSchedule;
       expect(times).toEqual([1, 2, 3]);
     });
   });
